@@ -5,8 +5,8 @@
     @description:
 
     @version: 1.4
-    @updated: "2023-12-01 15:50:09"
-    @revision: 373
+    @updated: "2023-12-01 16:20:31"
+    @revision: 377
     @localfile: ?defaultpath\AcmeBomb\?@name.lsl
     @license: by-nc-sa [https://creativecommons.org/licenses/by-nc-sa/4.0/]
 */
@@ -177,7 +177,12 @@ default
             if (exploded)
                 reset();
             else if (started)
+            {
+                llStopSound();
+                llSleep(0.1);
+                llPlaySound("explode", 1);
                 explode();
+            }
             else
                 start();
     }
