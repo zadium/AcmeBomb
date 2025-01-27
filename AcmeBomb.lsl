@@ -1,12 +1,12 @@
 /**
-*   @author: Zai Dium
+    @author: Zai Dium
 
     @name: AcmeBomb
     @description:
 
     @version: 1.4
-    @updated: "2023-12-01 16:20:31"
-    @revision: 377
+    @updated: "2024-11-12 00:06:33"
+    @revision: 384
     @localfile: ?defaultpath\AcmeBomb\?@name.lsl
     @license: by-nc-sa [https://creativecommons.org/licenses/by-nc-sa/4.0/]
 */
@@ -156,6 +156,8 @@ reset()
     //llSensor("", NULL_KEY, AGENT, 20.0, PI);
 }
 
+integer rezzed = FALSE;
+
 default
 {
     state_entry()
@@ -166,14 +168,16 @@ default
 
     on_rez(integer number)
     {
-        //llResetScript();
+        //llResetScript(); //* No do not reset
         reset();
+        rezzed = TRUE;
         start();
     }
 
     touch_start(integer num_detected)
     {
         if (llGetOwner()==llDetectedKey(0))
+        {
             if (exploded)
                 reset();
             else if (started)
@@ -185,6 +189,7 @@ default
             }
             else
                 start();
+        }
     }
 
     timer()
@@ -212,7 +217,8 @@ default
             }
             started = FALSE;
             llSleep(age);
-            llDie();
+            if (rezzed)
+                llDie();
         }
     }
 }

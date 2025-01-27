@@ -22,6 +22,17 @@ It will die after explode, if you want to edit script quickly reset script
 
 [DiscoveryGrid](hop://discoverygrid.net:8002/Lawrence Bay/1824/1888/102)
 
+## Build
+
+Import mesh
+
+Import sound fuse-explode.wav move it inside object
+
+Import textures Fuse.png, BombBody.png, assign it to fuse face, and body
+
+Import script AcmeBomb.lsl to it
+
+
 ## Resrouces
 
 https://mobcup.net/ringtone/bomb-timer-l6qhpog3/download/mp3
